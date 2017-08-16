@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)http://caibaojian.com/demo/2016/3/weixin-downapp.html?from=singlemessage -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>微信下载引导</title>
+	<link rel="stylesheet" type="text/css" href="./微信下载引导_files/reset.css">
+	<style type="text/css">
+	/*演示用，请勿引入项目中*/
+	*{margin:0; padding: 0;}
+	body{font:normal 14px/1.5 Arial,Microsoft Yahei; color:#333;}
+	.example{padding: 20px;}
+	.example p{margin: 20px 0;}
+	a{display: inline-block; background: #61B3E6; color:#fff; padding: 0 10px; border-radius: 4px; text-align: center; margin: 0 5px; line-height: 22px; font-size: 14px; text-decoration: none;}
+	a.btn-warn{background: #F0AD4E;}
+	a:hover{opacity: 0.8;}
+	/*核心css*/
+		.wxtip{background: rgba(0,0,0,0.8); text-align: center; position: fixed; left:0; top: 0; width: 100%; height: 100%; z-index: 998; display: none;}
+		.wxtip-icon{width: 52px; height: 67px; background: url(http://img.caibaojian.com/uploads/2016/01/weixin-tip.png) no-repeat; display: block; position: absolute; right: 30px; top: 20px;}
+		.wxtip-txt{padding-top: 107px; color: #fff; font-size: 16px; line-height: 1.5;}
+	</style>
+<script type="text/javascript" charset="utf-8" src="./微信下载引导_files/push.js"></script></head>
+<body>
+<div class="example">
+	<p>这只是一个演示例子：只对微信下载做一个演示，在微信中，当你点击下面链接时会弹出一个提示层，提醒用户通过右上角打开浏览器下载应用文件</p>
+	<a href="http://zcsdcxx.3vhost.net/" id="JdownApp">点击下载APP</a>
+	<a href="http://zcsdcxx.3vhost.net/" id="JdownApp2" class="btn-warn">点击下载APP2</a>
+	<div class="wxtip" id="JweixinTip">
+		<span class="wxtip-icon"></span>
+		<p class="wxtip-txt">点击右上角<br>选择在浏览器中打开</p>
+	</div>
+</div>
+<script type="text/javascript">
+function weixinTip(ele){
+var ua = navigator.userAgent;
+var isWeixin = !!/MicroMessenger/i.test(ua);
+if(isWeixin){
+	ele.onclick=function(e){
+		window.event? window.event.returnValue = false : e.preventDefault();
+		document.getElementById('JweixinTip').style.display='block';
+	}
+	document.getElementById('JweixinTip').onclick=function(){
+		this.style.display='none';
+	}
+}
+}
+var btn1 = document.getElementById('JdownApp');//下载一
+weixinTip(btn1);
+var btn2 = document.getElementById('JdownApp2'); //下载二
+weixinTip(btn2);
+</script>
+
+</body></html>
